@@ -1,3 +1,70 @@
 body {
-    background: orange;
+    background-color: #4CAF50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    position: relative;
+}
+
+.top {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: gray; /* Add background color or styles as needed */
+    z-index: 1;
+}
+  
+.middle {
+    flex: 1;
+    z-index: 0;
+    margin-top: 15vh;
+}
+  
+.bottom {
+    padding: 2vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: grey; /* Add background color or styles as needed */
+    z-index: 1;
+}
+
+#startDrawing {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#startDrawing:hover {
+    background-color: #3e8e41;
+}
+
+#startDrawing:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#sketchpad {
+    width: 100%;
+    height: auto; /* Set the desired height */
+    border: none;
 }

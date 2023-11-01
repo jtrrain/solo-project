@@ -7,9 +7,14 @@
     <link rel="stylesheet" type="text/scss" href="styles.scss">
 </head>
 <body>
-    <h1>Doodle-Bin</h1>
-    <div id="'root">Feed will go here!</div>
-    <button id="startDrawing">DRAW</button>
+    <div class="top">
+        <h1>Doodle-Bin</h1>
+    </div>
+    <iframe id="sketchpad" class="middle" style="display: none" src="./client/components/DrawingPad/test.html" frameborder="0"></iframe>
+    <div id="'root" class="middle">Feed will go here!</div>
+    <div class="bottom">
+        <button id="startDrawing">DRAW</button>
+    </div>
     <script src="bundle.js"></script>
 </body>
 </html>
