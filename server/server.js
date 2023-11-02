@@ -1,47 +1,48 @@
 const express = require('express');
 const app = express();
-const port = port = process.env.PORT || 3000;
-
-const router = express.Router();
+const mongoose = require('mongoose');
 const Drawing = require('./drawing');
 
-const multer = require('multer');
+const { MongoClient } = require('mongodb');
+const url = 'mongodb://localhost:27017/doodleBin';
+const client = new MongoClient(url);
 
-const drawingsRouter = require('./drawings');
-app.use('./api', drawingsRouter);
+client.connect()
+    .then(() => {
+        console.log('Connected to MongoDB');
+    })
+    .catch(err => {
+        console.log('Error connecting to MongoDB:', err);
+    })
 
-const mongoose = require('mongoose');
-const mongoURI = './uploads';
+const db = client.db('doodleBin');
 
-mongoose.connect(mongoURI);
+app.use(express.json());
 
-const db = mongoose.connection;
-
-router.post('./drawings', (req, res) => {
+app.post('./api/save-drawing', (req, res) => {
+    const drawingData = req.body.drawingData;
     const newDrawing = new Drawing({
-        title: req.body.title,
-        content: req.body.content
+        img: drawingData
     });
     newDrawing.save((err, drawing) => {
         if (err) {
-            res.status(500).json({error: 'Error saving the drawing'});
+            res.status(500).json({error: 'Error saving the drawing to the database'});
         } else {
             res.status(201).json(drawing);
         }
     })
 })
 
+app.get('/api/get-drawings', async (req, res) => {
+    try {
+        const drawings = await Drawing.find({});
+        res.status(500).json({ error: 'Error retrieving drawings' });
+    } catch (err) {
+        console.error('Error retrieving drawings:', err);
+        res.status(500).json({ error: 'Error retrieving drawings' });
+    }
+});
 
-db.on('error', (err) => {
-    console.error('MongoDB connection error:', err);
-})
-
-db.once('open', () => {
-    console.log('Connected to MongoDB');
-})
-
-module.exports = router;
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });

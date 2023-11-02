@@ -26,10 +26,28 @@ function mouseDragged() {
     ellipse(mouseX, mouseY, size, size);
   }
 }
-_("#reset-canvas").addEventListener("click", 
-function(){
+_("#reset-canvas").addEventListener("click", function(){
   background(255);
 });
 _("#save-canvas").addEventListener("click", function() {
-  saveCanvas(canvas, "sketch", "png");
+  // saveCanvas(canvas, "sketch", "png");
+  const doodle = document.getElementById("defaultCanvas0");
+  const dataURL = doodle.toDataURL('image/png');
+  fetch('/api/save-drawing', {
+    method: 'POST',
+    body: JSON.stringify({ drawingData: dataURL }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Drawing saved to the database');
+    } else {
+      console.log('Error saving the drawing');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  })
 })

@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Feed from './components/Feed';
 import styles from './styles.scss';
 
-const url = 'mongoose database link goes here'
+const url = 'mongodb://localhost:27017/doodleBin'
 
 document.getElementById("startDrawing").addEventListener("click", function () {
     document.getElementById("sketchpad").style.display = "block";

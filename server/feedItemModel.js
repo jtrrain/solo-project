@@ -1,9 +1,7 @@
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var imageSchema = new mongoose.Schema({
-    name: String,
-    desc: String,
+const imageSchema = new mongoose.Schema({
     img:
     {
         data: Buffer,
