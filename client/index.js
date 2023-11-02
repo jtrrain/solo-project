@@ -9,6 +9,10 @@ document.getElementById("startDrawing").addEventListener("click", function () {
     document.getElementById("sketchpad").style.display = "block";
 });
 
+document.getElementById("quitDrawing").addEventListener("click", function () {
+    document.getElementById("sketchpad").style.display = "none";
+});
+
 const App = () => {
     return (
         <div>

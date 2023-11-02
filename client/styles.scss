@@ -27,6 +27,7 @@ body {
 }
   
 .bottom {
+    gap: 1vw;
     padding: 2vh;
     position: fixed;
     display: flex;
@@ -63,8 +64,34 @@ body {
     transform: translateY(4px);
 }
 
-#sketchpad {
-    width: 100%;
-    height: auto; /* Set the desired height */
+#quitDrawing {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
     border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+#quitDrawing:hover {
+    background-color: #3e8e41;
+}
+
+#quitDrawing:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+#sketchpad {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    margin-top: -8vh;
 }
