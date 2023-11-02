@@ -30,46 +30,29 @@ Instagram-like app where users are able to doodle whatever they’d like in a pa
 HIGH LEVEL OVERVIEW
 Setup Your Development Environment:
 
-1. Make sure you have Node.js and npm (Node Package Manager) installed on your computer.
-    Create a new directory for your project.
-    Initialize the Project:
+Use npm init to create a package.json file and set up your project.
+    Install necessary dependencies, including Express, Mongoose
 
-2. Use npm init to create a package.json file and set up your project.
-    Install necessary dependencies, including Express, Mongoose, and any other libraries you plan to use. You can do this using npm install.
-    Create a Web Server with Express:
-
-3. Set up an Express.js server to serve your web application.
+Set up an Express.js server to serve your web application.
     Create a basic HTML file for the main application structure and a canvas element for drawing.
-    Implement the Drawing Functionality:
 
-4. Use JavaScript to capture mouse events (e.g., mousedown, mousemove, and mouseup) on the canvas element.
-    Implement code to draw on the canvas as the user moves the mouse.
-    You may need to use HTML5 Canvas API for this purpose.
-    Save Drawings on the Server:
+Implement the Drawing Functionality:
 
-5. Create an API endpoint to handle the submission of drawings.
+Create an API endpoint to handle the submission of drawings.
     Use Mongoose to define a data model for drawings, and save the drawings in a MongoDB database.
     When a user submits a drawing, send it to the server using AJAX (e.g., fetch or Axios).
-    Display Drawings on the Feed:
 
-6. Create a feed page where users can view all the uploaded drawings.
+Create a feed page where users can view all the uploaded drawings.
     Fetch drawings from the database using Mongoose and render them on the feed page.
-    Webpack Configuration:
 
-7. Set up Webpack to bundle your JavaScript code and other assets (CSS, images, etc.) into a single file for production.
+Set up Webpack to bundle JavaScript code and other assets (CSS, images, etc.) into a single file for production.
     Frontend Styling:
 
-8. Use CSS to style your web application and make it visually appealing.
-    User Authentication (Optional):
+Use CSS to style your web application and make it visually appealing.
 
-9. If needed, implement user authentication to allow users to log in, upload drawings, and track their submissions.
-    Error Handling and Validation:
+implement user authentication to allow users to log in, upload drawings, and track their submissions(if we have time).
 
-10. Implement error handling and validation to ensure that the user input is correct and secure.
-    Testing and Debugging:
-
-11. Test your app thoroughly to identify and fix any issues.
-    Use debugging tools like browser developer tools and server logs.
+Implement error handling and validation to ensure that the user input is correct and secure.
 
 Deployment: (extension lmao)
 Deploy your web application to a hosting service or platform of your choice (e.g., Heroku, AWS, or Vercel).

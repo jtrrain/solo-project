@@ -16,8 +16,51 @@
     </div>
     <div class="bottom">
         <button id="startDrawing">DRAW</button>
-        <button id="quitDrawing">exit</button>
+        <button id="quitDrawing">UPLOAD</button>
     </div>
     <script src="bundle.js"></script>
+    <script src="html2canvas.min.js"></script>
+    <script>
+        // I know its bad practice to have a bunch of js in here just to try and get it to work ...
+
+        // function sendToServer() {
+        //     const doodle = document.getElementById("sketchpad");
+        //     // const doodle = document.getElementById("defaultCanvas0"); // can't read the properties with the other html
+        //     // const doodle = document.getElementById("canvas-wrapper"); // not an object so .toDataURL doesnt run in the next line
+        //     console.log("WTF BRUV", doodle)
+        //     const dataURL = doodle.toDataURL('image/png');
+        //     fetch('/api/save-drawing', {
+        //         method: 'POST',
+        //         // body: new Drawing({
+        //         //   img: JSON.stringify({ drawingData: dataURL })
+        //         // }),
+        //         body: JSON.stringify({ drawingData: dataURL }),
+        //         headers: {
+        //         'Content-Type': 'application/json'
+        //         }
+        //     })
+        //     .then((response) => {
+        //         if (response.ok) {
+        //         console.log('Drawing saved to the database');
+        //         } else {
+        //         console.log('Error saving the drawing');
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     })
+        // }
+
+        document.getElementById("quitDrawing").addEventListener("click", function () {
+            // sendToServer();
+            html2canvas(document.querySelector("#sketchpad")).then(canvas => {
+                document.body.appendChild(canvas);
+                // document.getElementById("root").appendChild(canvas)
+            })
+            document.getElementById("sketchpad").style.display = "none";
+        });
+
+    </script>
+
 </body>
 </html>
