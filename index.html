@@ -8,15 +8,15 @@
 </head>
 <body>
     <div class="top">
-        <h1>Doodle-Bin</h1>
+        <h1><i>DoodleBin</i></h1>
     </div>
     <div id="'root" class="middle">
         <iframe id="sketchpad" class="middle" style="display: none" src="./client/components/DrawingPad/index.html" frameborder="0"></iframe>
         Feed will go here!
     </div>
     <div class="bottom">
-        <button id="startDrawing">DRAW</button>
-        <button id="quitDrawing">UPLOAD</button>
+        <button id="startDrawing"><i>DRAW</i></button>
+        <button id="quitDrawing"><i>UPLOAD</i></button>
     </div>
     <script src="bundle.js"></script>
     <script src="html2canvas.min.js"></script>
@@ -56,6 +56,28 @@
             html2canvas(document.querySelector("#sketchpad")).then(canvas => {
                 document.body.appendChild(canvas);
                 // document.getElementById("root").appendChild(canvas)
+                
+                fetch('/api/save-drawing', {
+                    method: 'POST',
+                    // body: new Drawing({
+                    //   img: JSON.stringify({ drawingData: dataURL })
+                    // }),
+                    body: JSON.stringify({ drawingData: canvas }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((response) => {
+                    if (response.ok) {
+                    console.log('Drawing saved to the database');
+                    } else {
+                    console.log('Error saving the drawing');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                })
+
             })
             document.getElementById("sketchpad").style.display = "none";
         });
